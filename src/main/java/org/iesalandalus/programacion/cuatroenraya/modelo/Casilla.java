@@ -26,4 +26,19 @@ public class Casilla {
 			return true;
 		}
 	}
+
+	@Override
+	public String toString() {
+		String control = " ";
+		
+		if (ficha == Ficha.AZUL) {
+			control = "A";
+		}
+		
+		if (ficha == Ficha.VERDE) {
+			control = "V";
+		}
+		return control;
+	}
+	
 }
