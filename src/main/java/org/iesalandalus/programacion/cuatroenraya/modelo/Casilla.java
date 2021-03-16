@@ -18,4 +18,12 @@ public class Casilla {
 		
 		this.ficha = ficha;
 	}
+	
+	public boolean estaOcupada() {
+		if (ficha == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
