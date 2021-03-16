@@ -32,8 +32,7 @@ public class Casilla {
 	}
 
 	@Override
-	public String toString() {
-				
+	public String toString() {		
 		return String.format("%.1s", (ficha == null) ? " " : ficha);
 	}
 	
