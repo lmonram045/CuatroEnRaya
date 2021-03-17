@@ -13,8 +13,18 @@ public class Tablero {
 	public Tablero() {
 		for (int i=0; i< FILAS; i++) {
 			for (int j=0;j < COLUMNAS; j++) {
-	    		 casillas[FILAS][COLUMNAS] = new Casilla();
+	    		 casillas[i][j] = new Casilla();
 	        }
 	    }
+	}
+	
+	//Método para saber si una columna esta vacía
+	private boolean columnaVacia(int columna) {
+		for (int i=0; i < FILAS; i++) {
+			if (casillas[i][columna].estaOcupada()) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
