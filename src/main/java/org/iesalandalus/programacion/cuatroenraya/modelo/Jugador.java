@@ -30,5 +30,12 @@ public class Jugador {
 		}
 		this.ficha = ficha;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%1$s (%2$s)",nombre,ficha);
+	}
+	
+	
 	
 }
