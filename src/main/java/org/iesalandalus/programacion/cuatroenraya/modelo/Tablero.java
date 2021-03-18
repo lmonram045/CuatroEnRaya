@@ -83,4 +83,12 @@ public class Tablero {
 		return -1; //Retorno -1 si la columna estuviera llena.
 	}
 	
+	//Método para comprobar si el objetivo ha sido alcanzado.
+	private boolean objetivoAlcanzado(int fichasConsecutivas) {
+		if (fichasConsecutivas >= FICHAS_IGUALES_CONSECUTIVAS_NECESARIAS) {
+			return true;
+		}
+		return false;
+	}
+	
 }
