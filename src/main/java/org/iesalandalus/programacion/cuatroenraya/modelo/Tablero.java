@@ -29,7 +29,7 @@ public class Tablero {
 	}
 	
 	//Método para saber si el tablero está vacío.
-	private boolean estaVacio() {
+	public boolean estaVacio() {
 		for (int i = 0; i < COLUMNAS; i++) {
 			if (!columnaVacia(i)) {
 				return false;
@@ -37,4 +37,6 @@ public class Tablero {
 		}
 		return true;
 	}
+	
+	
 }
