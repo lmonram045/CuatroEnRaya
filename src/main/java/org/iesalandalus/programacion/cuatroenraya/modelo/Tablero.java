@@ -49,7 +49,7 @@ public class Tablero {
 	}
 	
 	//Método para saber si el tablero está lleno.
-	public boolean estaLLeno() {
+	public boolean estaLleno() {
 		for (int i = 0; i < COLUMNAS; i++) {
 			if (!columnaLLena(i)) {
 				return false;
