@@ -58,4 +58,12 @@ public class Tablero {
 		return true;
 	}
 	
+	//Método para comprobar si una ficha pasada por parámetro es correcta.
+	private void comprobarFicha(Ficha ficha) {
+		if (ficha == null) {
+			throw new NullPointerException("ERROR: La ficha no puede ser nula.");
+		}
+	}
+	
+	
 }
