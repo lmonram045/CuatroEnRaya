@@ -38,5 +38,14 @@ public class Tablero {
 		return true;
 	}
 	
+	//Método para saber si una columna está llena
+	private boolean columnaLLena(int columna) {
+		for (int i = 0; i < FILAS; i++) {
+			if (!casillas[i][columna].estaOcupada()) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 }
