@@ -117,4 +117,12 @@ public class Tablero {
 		return (objetivoAlcanzado(fichasConsecutivas));
 	}
 	
+	//Método para comprobar el menor de 2 numeros
+	private int menor(int primerNumero, int segundoNumero) {
+		if (primerNumero <= segundoNumero) {
+			return primerNumero;
+		} else {
+			return segundoNumero;
+		}
+	}
 }
