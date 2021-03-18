@@ -65,5 +65,11 @@ public class Tablero {
 		}
 	}
 	
+	//Método para comprobar que una columna es correcta
+	private void comprobarColumna(int columna) {
+		if (columna < 1 || columna > COLUMNAS) {
+			throw new IllegalArgumentException("ERROR: Columna incorrecta.");
+		}
+	}
 	
 }
