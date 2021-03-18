@@ -91,6 +91,7 @@ public class Tablero {
 		return false;
 	}
 	
+	//Método para comprobar si hay 4 consecutivas en una fila
 	private boolean comprobarHorizontal(int fila, Ficha ficha) {
 		int fichasConsecutivas = 0;
 		for (int columna = 0; columna <= COLUMNAS; columna++) {
@@ -101,7 +102,19 @@ public class Tablero {
 			}
 		}
 		return (objetivoAlcanzado(fichasConsecutivas));
-		
+	}
+	
+	//Método para comprobar si hay 4 consecutivas en una columna.
+	private boolean comprobarVertical(int columna, Ficha ficha) {
+		int fichasConsecutivas = 0;
+		for (int fila = 0; fila <= FILAS; fila++) {
+			if (casillas[fila][columna].estaOcupada() && casillas[fila][columna].getFicha() == ficha) {
+				fichasConsecutivas++;
+			} else {
+				fichasConsecutivas = 0;
+			}
+		}
+		return (objetivoAlcanzado(fichasConsecutivas));
 	}
 	
 }
