@@ -1,9 +1,10 @@
 package org.iesalandalus.programacion.cuatroenraya.modelo;
 
 public class Tablero {
-	//Constantes
-	static final int FILAS = 6;
-	static final int COLUMNAS = 7;
+	//Constantes, toma la FILA 0 como la de abajo y la FILA 5 como la de arriba,
+	//toma la COLUMNA 0 como la de la izquierda
+	static final int FILAS = 5;
+	static final int COLUMNAS = 6;
 	static final int FICHAS_IGUALES_CONSECUTIVAS_NECESARIAS = 4;
 	
 	//Declaración de array bidimensional
@@ -11,8 +12,8 @@ public class Tablero {
 	
 	//Constructor por defecto, recorro array e inicializo
 	public Tablero() {
-		for (int i=0; i< FILAS; i++) {
-			for (int j=0;j < COLUMNAS; j++) {
+		for (int i=0; i<= FILAS; i++) {
+			for (int j=0;j <= COLUMNAS; j++) {
 	    		 casillas[i][j] = new Casilla();
 	        }
 	    }
@@ -20,7 +21,7 @@ public class Tablero {
 	
 	//Método para saber si una columna esta vacía
 	private boolean columnaVacia(int columna) {
-		for (int i=0; i < FILAS; i++) {
+		for (int i=0; i <= FILAS; i++) {
 			if (casillas[i][columna].estaOcupada()) {
 				return false;
 			}
@@ -30,7 +31,7 @@ public class Tablero {
 	
 	//Método para saber si el tablero está vacío.
 	public boolean estaVacio() {
-		for (int i = 0; i < COLUMNAS; i++) {
+		for (int i = 0; i <= COLUMNAS; i++) {
 			if (!columnaVacia(i)) {
 				return false;
 			}
@@ -39,8 +40,8 @@ public class Tablero {
 	}
 	
 	//Método para saber si una columna está llena
-	private boolean columnaLLena(int columna) {
-		for (int i = 0; i < FILAS; i++) {
+	private boolean columnaLlena(int columna) {
+		for (int i = 0; i <= FILAS; i++) {
 			if (!casillas[i][columna].estaOcupada()) {
 				return false;
 			}
@@ -50,8 +51,8 @@ public class Tablero {
 	
 	//Método para saber si el tablero está lleno.
 	public boolean estaLleno() {
-		for (int i = 0; i < COLUMNAS; i++) {
-			if (!columnaLLena(i)) {
+		for (int i = 0; i <= COLUMNAS; i++) {
+			if (!columnaLlena(i)) {
 				return false;
 			}
 		}
@@ -70,6 +71,16 @@ public class Tablero {
 		if (columna < 1 || columna > COLUMNAS) {
 			throw new IllegalArgumentException("ERROR: Columna incorrecta.");
 		}
+	}
+	
+	//Método para saber la primera fila vacía de una columna.
+	private int getPrimeraFilaVacia(int columna) {
+		for (int i = 0; i <= FILAS; i++) {
+			if (!casillas[i][columna].estaOcupada()) {
+				return i;
+			}
+		}
+		return -1; //Retorno -1 si la columna estuviera llena.
 	}
 	
 }
