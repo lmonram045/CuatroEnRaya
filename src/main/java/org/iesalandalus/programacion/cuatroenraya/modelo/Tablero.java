@@ -97,6 +97,9 @@ public class Tablero {
 		for (int columna = 0; columna <= COLUMNAS; columna++) {
 			if (casillas[fila][columna].estaOcupada() && casillas[fila][columna].getFicha() == ficha) {
 				fichasConsecutivas++;
+				if (objetivoAlcanzado(fichasConsecutivas)) {
+					return (objetivoAlcanzado(fichasConsecutivas));
+				}
 			} else {
 				fichasConsecutivas = 0;
 			}
@@ -110,6 +113,9 @@ public class Tablero {
 		for (int fila = 0; fila <= FILAS; fila++) {
 			if (casillas[fila][columna].estaOcupada() && casillas[fila][columna].getFicha() == ficha) {
 				fichasConsecutivas++;
+				if (objetivoAlcanzado(fichasConsecutivas)) {
+					return (objetivoAlcanzado(fichasConsecutivas));
+				}
 			} else {
 				fichasConsecutivas = 0;
 			}
@@ -124,5 +130,37 @@ public class Tablero {
 		} else {
 			return segundoNumero;
 		}
+	}
+	
+	//Método para comprobar si hay 4 consecutivas en la diagonal NE a partir de una fila, columna y color de ficha.
+	private boolean comprobarDiagonalNE(int fila, int columna, Ficha ficha) {
+		//variables
+		int fichasConsecutivas = 0;
+		int desplazamiento = menor(fila, columna);
+		int filaInicial = fila - desplazamiento;
+		int columnaInicial = columna - desplazamiento;
+		//Bucle for que recorre las columnas, desde la minima posible hasta la maxima posible
+		for (columnaInicial = columnaInicial; columnaInicial <= COLUMNAS; columnaInicial++) {
+			//con este if, compruebo que no se ha pasado de fila
+			if (filaInicial <= FILAS) {
+				//if para comprobar si una casilla esta ocupada y es del mismo color que el pasado al metodo.
+				if (casillas[filaInicial][columnaInicial].estaOcupada() && casillas[filaInicial][columnaInicial].getFicha() == ficha) {
+					//si es correcto, aumento fichasConsecutivas, y si alcanzo 4, retorno objetivoAlcanzado
+					fichasConsecutivas++;
+					if (objetivoAlcanzado(fichasConsecutivas)) {
+						return (objetivoAlcanzado(fichasConsecutivas));
+					}
+				} else {
+					//si no esta ocupada una casilla vuelve a poner el contador a 0
+					fichasConsecutivas = 0;
+				}
+				//aumento la fila para poder seguir las comprobaciones, la columna ya la aumenta el bucle for
+				filaInicial++;
+			//en este else le digo que si ya a alcanzado la fila tope, termine el metodo con un return
+			} else {
+				return (objetivoAlcanzado(fichasConsecutivas));
+			}
+		}
+		return (objetivoAlcanzado(fichasConsecutivas));
 	}
 }
