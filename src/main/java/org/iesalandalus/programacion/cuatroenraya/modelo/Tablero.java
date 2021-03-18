@@ -91,4 +91,17 @@ public class Tablero {
 		return false;
 	}
 	
+	private boolean comprobarHorizontal(int fila, Ficha ficha) {
+		int fichasConsecutivas = 0;
+		for (int columna = 0; columna <= COLUMNAS; columna++) {
+			if (casillas[fila][columna].estaOcupada() && casillas[fila][columna].getFicha() == ficha) {
+				fichasConsecutivas++;
+			} else {
+				fichasConsecutivas = 0;
+			}
+		}
+		return (objetivoAlcanzado(fichasConsecutivas));
+		
+	}
+	
 }
