@@ -35,5 +35,6 @@ public class Casilla {
 	public String toString() {		
 		return String.format("%.1s", (ficha == null) ? " " : ficha);
 	}
+	//comentario para hacer prueba de commit
 	
 }
