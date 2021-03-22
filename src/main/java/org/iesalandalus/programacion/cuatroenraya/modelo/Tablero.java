@@ -183,4 +183,21 @@ public class Tablero {
 		
 		return objetivoAlcanzado(fichasConsecutivas);
 	}
+	
+	//Método para comprobar si la tirada es ganadora
+	private boolean comprobarTirada(int fila, int columna, Ficha ficha) {
+		if (comprobarHorizontal(fila, ficha)) {
+			return true;
+		}
+		if (comprobarVertical(columna, ficha)) {
+			return true;
+		}
+		if (comprobarDiagonalNE(fila, columna, ficha)) {
+			return true;
+		}
+		if (comprobarDiagonalNO(fila, columna, ficha)) {
+			return true;
+		}
+		return false;
+	}
 }
