@@ -104,7 +104,7 @@ public class Tablero {
 				fichasConsecutivas = 0;
 			}
 		}
-		return (objetivoAlcanzado(fichasConsecutivas));
+		return objetivoAlcanzado(fichasConsecutivas);
 	}
 	
 	//Método para comprobar si hay 4 consecutivas en una columna.
@@ -120,7 +120,7 @@ public class Tablero {
 				fichasConsecutivas = 0;
 			}
 		}
-		return (objetivoAlcanzado(fichasConsecutivas));
+		return objetivoAlcanzado(fichasConsecutivas);
 	}
 	
 	//Método para comprobar el menor de 2 numeros
@@ -156,11 +156,31 @@ public class Tablero {
 			columnaInicial++;
 		} while (columnaInicial <= COLUMNAS && filaInicial <= FILAS);
 			
-		return (objetivoAlcanzado(fichasConsecutivas));
+		return objetivoAlcanzado(fichasConsecutivas);
 	}
 	
+	//Método para comprobar la diagonal noroeste (desde abajo a la derecha)
 	private boolean comprobarDiagonalNO(int fila, int columna, Ficha ficha) {
 		int fichasConsecutivas = 0;
-		int desplazamiento = menor(fila, COLUMNAS - 1 - columna);
+		/*En el enunciado dice que lo calcule como COLUMNAS - 1 - columna, pero no me saldría correctamente, si al final no me pasa los
+		test, modificaré el codigo, por ahora lo dejo así */
+		int desplazamiento = menor(fila, COLUMNAS - columna); 
+		int filaInicial = fila - desplazamiento;
+		int columnaInicial = columna + desplazamiento;
+		do {
+			if (casillas[filaInicial][columnaInicial].estaOcupada() && casillas[filaInicial][columnaInicial].getFicha() == ficha) {
+				fichasConsecutivas++;
+				if (objetivoAlcanzado(fichasConsecutivas)) {
+					return true;
+				}
+			} else {
+				fichasConsecutivas = 0;
+			}
+			//aumento la fila y disminuyo columna
+			filaInicial++;
+			columnaInicial--;
+		} while (columnaInicial >= 0 && filaInicial <= FILAS);
+		
+		return objetivoAlcanzado(fichasConsecutivas);
 	}
 }
