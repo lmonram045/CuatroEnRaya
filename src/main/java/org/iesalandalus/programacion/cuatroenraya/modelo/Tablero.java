@@ -3,8 +3,8 @@ package org.iesalandalus.programacion.cuatroenraya.modelo;
 public class Tablero {
 	//Constantes, toma la FILA 0 como la de abajo y la FILA 5 como la de arriba,
 	//toma la COLUMNA 0 como la de la izquierda
-	static final int FILAS = 5;
-	static final int COLUMNAS = 6;
+	static final int FILAS = 5; //Son 6 filas, empiezo a contar desde la 0
+	static final int COLUMNAS = 6; //Son 7 columnas, empiezo a contar desde la 0
 	static final int FICHAS_IGUALES_CONSECUTIVAS_NECESARIAS = 4;
 	
 	//Declaración de array bidimensional
@@ -68,7 +68,7 @@ public class Tablero {
 	
 	//Método para comprobar que una columna es correcta
 	private void comprobarColumna(int columna) {
-		if (columna < 1 || columna > COLUMNAS) {
+		if (columna < 0 || columna > COLUMNAS) {
 			throw new IllegalArgumentException("ERROR: Columna incorrecta.");
 		}
 	}
@@ -98,7 +98,7 @@ public class Tablero {
 			if (casillas[fila][columna].estaOcupada() && casillas[fila][columna].getFicha() == ficha) {
 				fichasConsecutivas++;
 				if (objetivoAlcanzado(fichasConsecutivas)) {
-					return (objetivoAlcanzado(fichasConsecutivas));
+					return true;
 				}
 			} else {
 				fichasConsecutivas = 0;
@@ -114,7 +114,7 @@ public class Tablero {
 			if (casillas[fila][columna].estaOcupada() && casillas[fila][columna].getFicha() == ficha) {
 				fichasConsecutivas++;
 				if (objetivoAlcanzado(fichasConsecutivas)) {
-					return (objetivoAlcanzado(fichasConsecutivas));
+					return true;
 				}
 			} else {
 				fichasConsecutivas = 0;
@@ -139,28 +139,28 @@ public class Tablero {
 		int desplazamiento = menor(fila, columna);
 		int filaInicial = fila - desplazamiento;
 		int columnaInicial = columna - desplazamiento;
-		//Bucle for que recorre las columnas, desde la minima posible hasta la maxima posible
-		for (columnaInicial = columnaInicial; columnaInicial <= COLUMNAS; columnaInicial++) {
-			//con este if, compruebo que no se ha pasado de fila
-			if (filaInicial <= FILAS) {
-				//if para comprobar si una casilla esta ocupada y es del mismo color que el pasado al metodo.
-				if (casillas[filaInicial][columnaInicial].estaOcupada() && casillas[filaInicial][columnaInicial].getFicha() == ficha) {
-					//si es correcto, aumento fichasConsecutivas, y si alcanzo 4, retorno objetivoAlcanzado
-					fichasConsecutivas++;
-					if (objetivoAlcanzado(fichasConsecutivas)) {
-						return (objetivoAlcanzado(fichasConsecutivas));
-					}
-				} else {
-					//si no esta ocupada una casilla vuelve a poner el contador a 0
-					fichasConsecutivas = 0;
+		//Bucle do-while para comprobar las casillas ocupadas, hasta que alcance el límite de casillas o columnas.
+		do {
+			if (casillas[filaInicial][columnaInicial].estaOcupada() && casillas[filaInicial][columnaInicial].getFicha() == ficha) {
+				//si es correcto, aumento fichasConsecutivas, y si alcanzo 4, retorno objetivoAlcanzado
+				fichasConsecutivas++;
+				if (objetivoAlcanzado(fichasConsecutivas)) {
+					return true;
 				}
-				//aumento la fila para poder seguir las comprobaciones, la columna ya la aumenta el bucle for
-				filaInicial++;
-			//en este else le digo que si ya a alcanzado la fila tope, termine el metodo con un return
 			} else {
-				return (objetivoAlcanzado(fichasConsecutivas));
+				//si no esta ocupada una casilla vuelve a poner el contador a 0
+				fichasConsecutivas = 0;
 			}
-		}
+			//aumento la fila y columna
+			filaInicial++;
+			columnaInicial++;
+		} while (columnaInicial <= COLUMNAS && filaInicial <= FILAS);
+			
 		return (objetivoAlcanzado(fichasConsecutivas));
+	}
+	
+	private boolean comprobarDiagonalNO(int fila, int columna, Ficha ficha) {
+		int fichasConsecutivas = 0;
+		int desplazamiento = menor(fila, COLUMNAS - 1 - columna);
 	}
 }
