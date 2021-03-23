@@ -220,7 +220,15 @@ public class Tablero {
 
 	@Override
 	public String toString() {
-		return String.format();
+		StringBuilder s = new StringBuilder();
+		int fila = 0;
+		int columna = 0;
+		s.append("|");
+		do {
+			if casillas[fila][columna].estaOcupada() {
+				s.append(false)
+			}
+		} while (columna < COLUMNAS);
 	}
 	
 }
