@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.cuatroenraya.modelo;
 
+import java.util.Arrays;
+
 import javax.naming.OperationNotSupportedException;
 
 public class Tablero {
@@ -215,4 +217,10 @@ public class Tablero {
 		}
 		return comprobarTirada(fila, columna);	
 	}
+
+	@Override
+	public String toString() {
+		return String.format();
+	}
+	
 }
