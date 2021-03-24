@@ -221,14 +221,17 @@ public class Tablero {
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		int fila = 0;
-		int columna = 0;
-		s.append("|");
+		int fila = FILAS - 1;
+		
 		do {
-			if casillas[fila][columna].estaOcupada() {
-				s.append(false)
+			s.append("|");
+			for(int columna = 0; columna < COLUMNAS; columna++) {
+				s.append(casillas[fila][columna].toString());
 			}
-		} while (columna < COLUMNAS);
+			s.append("|\n");
+			fila--;
+		} while (fila >= 0);
+		s.append(" -------\n");
+		return s.toString();
 	}
-	
 }
