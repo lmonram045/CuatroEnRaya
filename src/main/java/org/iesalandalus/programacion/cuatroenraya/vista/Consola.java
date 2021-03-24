@@ -1,7 +1,7 @@
 package org.iesalandalus.programacion.cuatroenraya.vista;
 
 import org.iesalandalus.programacion.utilidades.Entrada;
-import org.iesalandalus.programacion.cuatroenraya.modelo.Ficha;
+import org.iesalandalus.programacion.cuatroenraya.modelo.*;
 
 public class Consola {
 	private Consola() {
@@ -27,6 +27,11 @@ public class Consola {
 		} while (ficha != 'A' && ficha != 'V');
 		
 		return (ficha == 'A') ? Ficha.AZUL : Ficha.VERDE;
+	}
+	
+	public static Jugador leerJugador() {
+		Jugador jugador = new Jugador(leerNombre(), elegirColorFichas());
+		return jugador;
 	}
 	
 	
