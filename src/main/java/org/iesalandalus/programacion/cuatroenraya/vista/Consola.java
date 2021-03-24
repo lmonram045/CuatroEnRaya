@@ -34,5 +34,10 @@ public class Consola {
 		return jugador;
 	}
 	
+	public static Jugador leerJugador(Ficha ficha) {
+		Jugador jugador = new Jugador(leerNombre(), ficha);
+		return jugador;
+	}
+	
 	
 }
