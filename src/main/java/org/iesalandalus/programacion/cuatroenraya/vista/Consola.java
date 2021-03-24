@@ -1,7 +1,8 @@
 package org.iesalandalus.programacion.cuatroenraya.vista;
 
 import org.iesalandalus.programacion.utilidades.Entrada;
-import org.iesalandalus.programacion.cuatroenraya.modelo.*;
+import org.iesalandalus.programacion.cuatroenraya.modelo.Ficha;
+import org.iesalandalus.programacion.cuatroenraya.modelo.Jugador;
 
 public class Consola {
 	private Consola() {
@@ -39,5 +40,14 @@ public class Consola {
 		return jugador;
 	}
 	
+	public static int leerColumna(Jugador jugador) {
+		int columna;
+		do {
+			System.out.print(jugador.getNombre() + " introduzca la columna en la que desea realizar la tirada (0/6): ");
+			columna = Entrada.entero();
+		} while (columna < 0 || columna > 6);
+		
+		return columna;
+	}
 	
 }
