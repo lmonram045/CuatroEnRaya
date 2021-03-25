@@ -23,7 +23,7 @@ public class CuatroEnRaya {
 		do {
 			tablero.introducirFicha(columna, jugador.getColorFichas());
 			//me falta que capture la excepcion de introducirFicha, y que cuando salte esa excepcion repita el proceso
-			//mirar en los test para intentar sacar de ahí como lo hace el profesor.
+			//mirar en los test para intentar sacar de ahí como lo hace el profesor
 		} while (!tablero.introducirFicha(columna, jugador.getColorFichas()));
 		
 	}
