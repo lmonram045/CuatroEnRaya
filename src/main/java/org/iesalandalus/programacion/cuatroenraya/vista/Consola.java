@@ -20,14 +20,14 @@ public class Consola {
 	}
 	
 	public static Ficha elegirColorFichas() {
-		char ficha = ' ';
+		int ficha = 0;
 		
 		do {
-			System.out.print("Introduzca el color de la ficha, azul o verde (A/V)");
-			ficha = Entrada.caracter();
-		} while (ficha != 'A' && ficha != 'V');
+			System.out.print("Introduzca el color de la ficha, azul o verde (0 - AZUL / 1 - VERDE: ");
+			ficha = Entrada.entero();
+		} while (ficha != 0 && ficha != 1);
 		
-		return (ficha == 'A') ? Ficha.AZUL : Ficha.VERDE;
+		return (ficha == 0) ? Ficha.AZUL : Ficha.VERDE;
 	}
 	
 	public static Jugador leerJugador() {
@@ -45,6 +45,10 @@ public class Consola {
 		do {
 			System.out.print(jugador.getNombre() + " introduzca la columna en la que desea realizar la tirada (0/6): ");
 			columna = Entrada.entero();
+			
+			if (columna < 0 || columna > 6) {
+				System.out.println("La columna no existe, repita la tirada.");
+			}
 		} while (columna < 0 || columna > 6);
 		
 		return columna;
